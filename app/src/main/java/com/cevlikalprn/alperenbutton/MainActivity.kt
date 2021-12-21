@@ -10,22 +10,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val btnAlper = findViewById<ButtonAlper>(R.id.buttonAlper)
-/*
-        btnAlper.apply {
 
-            changeRadius(12f)
-
-            changeBackgroundColor(resources.getColor(R.color.def_background_color))
-
-            changeShadowState(
+        btnAlper.changeRadius(12f)
+            .changeBackgroundColor(resources.getColor(R.color.def_background_color))
+            .changeShadowState(
                 shadowColor = resources.getColor(R.color.def_shadow_color),
                 shadowHeight = 12f
             )
+            .changeRippleEffect(
+                rippleColor = resources.getColor(R.color.white),
+                rippleOpacity = 0.30f
+            )
 
-            changeRippleEffect(rippleColor = resources.getColor(R.color.white), rippleOpacity = 0.30f)
 
-        }
-        
- */
     }
 }

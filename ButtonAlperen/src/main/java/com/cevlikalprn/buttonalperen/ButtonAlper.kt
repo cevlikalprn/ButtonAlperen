@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.drawable.*
 import android.graphics.drawable.shapes.RoundRectShape
 import android.util.AttributeSet
+import android.widget.Button
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
 import com.cevlikalprn.buttonalperen.Constants.DEF_RADIUS
@@ -173,17 +174,19 @@ class ButtonAlper : AppCompatButton {
         )
     }
 
-    fun changeBackgroundColor(color: Int) {
+    fun changeBackgroundColor(color: Int): ButtonAlper {
         buttonBackgroundColor = color
         setDefButtonAttributes()
+        return this
     }
 
-    fun changeRadius(radius: Float) {
+    fun changeRadius(radius: Float): ButtonAlper {
         buttonRadius = radius
         gradientDrawable.cornerRadii = getFloatArray(radius)
+        return this
     }
 
-    fun changeShadowState(shadowColor: Int, shadowHeight: Float) {
+    fun changeShadowState(shadowColor: Int, shadowHeight: Float): ButtonAlper {
         val shadowDrawable = shadowDrawable(
             buttonBackgroundColor!!,
             shadowColor,
@@ -195,9 +198,10 @@ class ButtonAlper : AppCompatButton {
             shadowDrawable,
             maskGradientDrawable
         )
+        return this
     }
 
-    fun changeRippleEffect(rippleColor: Int, rippleOpacity: Float) {
+    fun changeRippleEffect(rippleColor: Int, rippleOpacity: Float): ButtonAlper {
         val colorStateList =
             ColorStateList.valueOf(getColorForRipple(rippleColor, rippleOpacity))
 
@@ -211,5 +215,6 @@ class ButtonAlper : AppCompatButton {
             ),
             maskGradientDrawable
         )
+        return this
     }
 }
