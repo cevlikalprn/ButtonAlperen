@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val btnAlper = findViewById<ButtonAlper>(R.id.buttonAlper)
-
+/*
         btnAlper.apply {
 
             changeRadius(12f)
@@ -25,5 +25,7 @@ class MainActivity : AppCompatActivity() {
             changeRippleEffect(rippleColor = resources.getColor(R.color.white), rippleOpacity = 0.30f)
 
         }
+        
+ */
     }
 }

@@ -27,11 +27,11 @@ class ButtonAlper : AppCompatButton {
 
 
     constructor(context: Context) : super(context) {
-        initButtonAttributes()
+        initButtonAttributes(null)
     }
 
     constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet) {
-        initButtonAttributes()
+        initButtonAttributes(attributeSet)
     }
 
     constructor(context: Context, attributeSet: AttributeSet, defStyleAttr: Int) : super(
@@ -39,10 +39,11 @@ class ButtonAlper : AppCompatButton {
         attributeSet,
         defStyleAttr
     ) {
-        initButtonAttributes()
+        initButtonAttributes(attributeSet)
     }
 
-    private fun initButtonAttributes() {
+
+    private fun initButtonAttributes(attributeSet: AttributeSet?) {
 
         if (isInEditMode) {
             return
@@ -51,43 +52,44 @@ class ButtonAlper : AppCompatButton {
         this.isClickable = true
         this.isAllCaps = false
 
-        //attributeSet?.let {
-        val typedArray = context.obtainStyledAttributes(R.styleable.ButtonAlper)
+        attributeSet?.let {
 
-        buttonBackgroundColor = typedArray.getColor(
-            R.styleable.ButtonAlper_ab_bg_color,
-            ContextCompat.getColor(context, R.color.def_background_color)
-        )
 
-        buttonShadowColor = typedArray.getColor(
-            R.styleable.ButtonAlper_ab_shadow_color,
-            ContextCompat.getColor(context, R.color.def_shadow_color)
-        )
+            val typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.ButtonAlper)
 
-        buttonShadowHeight = typedArray.getDimension(
-            R.styleable.ButtonAlper_ab_shadow_height,
-            DEF_SHADOW_HEIGHT
-        )
+            buttonBackgroundColor = typedArray.getColor(
+                R.styleable.ButtonAlper_ab_bg_color,
+                ContextCompat.getColor(context, R.color.def_background_color)
+            )
 
-        buttonRadius = typedArray.getDimension(
-            R.styleable.ButtonAlper_ab_radius,
-            DEF_RADIUS
-        )
+            buttonShadowColor = typedArray.getColor(
+                R.styleable.ButtonAlper_ab_shadow_color,
+                ContextCompat.getColor(context, R.color.def_shadow_color)
+            )
 
-        buttonRippleColor = typedArray.getColor(
-            R.styleable.ButtonAlper_ab_ripple_color,
-            ContextCompat.getColor(context, R.color.def_ripple_color)
-        )
+            buttonShadowHeight = typedArray.getDimension(
+                R.styleable.ButtonAlper_ab_shadow_height,
+                DEF_SHADOW_HEIGHT
+            )
 
-        buttonRippleOpacity = typedArray.getFloat(
-            R.styleable.ButtonAlper_ab_ripple_opacity,
-            DEF_RIPPLE_OPACITY
-        )
-        // }
+            buttonRadius = typedArray.getDimension(
+                R.styleable.ButtonAlper_ab_radius,
+                DEF_RADIUS
+            )
 
-        typedArray.recycle()
+            buttonRippleColor = typedArray.getColor(
+                R.styleable.ButtonAlper_ab_ripple_color,
+                ContextCompat.getColor(context, R.color.def_ripple_color)
+            )
+
+            buttonRippleOpacity = typedArray.getFloat(
+                R.styleable.ButtonAlper_ab_ripple_opacity,
+                DEF_RIPPLE_OPACITY
+            )
+
+            typedArray.recycle()
+        }
         setDefButtonAttributes()
-
     }
 
     private fun setDefButtonAttributes() {
