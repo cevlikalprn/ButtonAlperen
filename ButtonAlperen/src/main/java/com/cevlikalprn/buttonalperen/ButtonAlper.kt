@@ -18,12 +18,12 @@ class ButtonAlper : AppCompatButton {
 
     private var gradientDrawable = GradientDrawable()
     private var maskGradientDrawable = GradientDrawable()
-    var buttonBackgroundColor: Int? = null
-    var buttonRadius: Float? = null
-    var buttonShadowColor: Int? = null
-    var buttonShadowHeight: Float? = null
-    var buttonRippleColor: Int? = null
-    var buttonRippleOpacity: Float? = null
+    private var buttonBackgroundColor: Int? = null
+    private var buttonRadius: Float? = null
+    private var buttonShadowColor: Int? = null
+    private var buttonShadowHeight: Float? = null
+    private var buttonRippleColor: Int? = null
+    private var buttonRippleOpacity: Float? = null
 
 
     constructor(context: Context) : super(context) {
