@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <declare-styleable name="ButtonAlper">
+
+        <attr name="ab_bg_color" format="color" />
+        <attr name="ab_shadow_color" format="color" />
+        <attr name="ab_shadow_height" format="dimension" />
+        <attr name="ab_radius" format="dimension" />
+        <attr name="ab_ripple_color" format="color" />
+        <attr name="ab_ripple_opacity" format="float" />
+    </declare-styleable>
+
+</resources>

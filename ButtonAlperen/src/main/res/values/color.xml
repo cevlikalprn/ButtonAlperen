@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="def_background_color">#ff7342</color>
+    <color name="def_shadow_color">#994628</color>
+    <color name="def_ripple_color">#FFFFFF</color>
+
+    <color name="green">#1DBE24</color>
+
+</resources>
