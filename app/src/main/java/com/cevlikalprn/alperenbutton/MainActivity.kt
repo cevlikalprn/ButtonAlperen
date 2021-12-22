@@ -11,7 +11,8 @@ class MainActivity : AppCompatActivity() {
 
         val btnAlper = findViewById<ButtonAlper>(R.id.buttonAlper)
 
-        btnAlper.changeRadius(12f)
+        btnAlper
+            .changeRadius(12f)
             .changeBackgroundColor(resources.getColor(R.color.def_background_color))
             .changeShadowState(
                 shadowColor = resources.getColor(R.color.def_shadow_color),
@@ -21,7 +22,5 @@ class MainActivity : AppCompatActivity() {
                 rippleColor = resources.getColor(R.color.white),
                 rippleOpacity = 0.30f
             )
-
-
     }
 }

@@ -6,7 +6,6 @@ import android.graphics.Color
 import android.graphics.drawable.*
 import android.graphics.drawable.shapes.RoundRectShape
 import android.util.AttributeSet
-import android.widget.Button
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
 import com.cevlikalprn.buttonalperen.Constants.DEF_RADIUS
@@ -90,10 +89,10 @@ class ButtonAlper : AppCompatButton {
 
             typedArray.recycle()
         }
-        setDefButtonAttributes()
+        setButtonAttributes()
     }
 
-    private fun setDefButtonAttributes() {
+    private fun setButtonAttributes() {
 
         gradientDrawable.cornerRadii = getFloatArray(buttonRadius!!)
         gradientDrawable.setColor(buttonBackgroundColor!!)
@@ -106,19 +105,19 @@ class ButtonAlper : AppCompatButton {
         val colorStateList = getColorStateList(buttonRippleColor!!, buttonRippleOpacity!!)
 
 
-        val shadowDrawable = shadowDrawable(
+        val layerDrawable = layerDrawable(
             buttonBackgroundColor!!,
             buttonShadowColor!!,
             buttonShadowHeight!!,
             buttonRadius!!
         )
 
-        val myDrawable = RippleDrawable(colorStateList, shadowDrawable, maskGradientDrawable)
+        val myDrawable = RippleDrawable(colorStateList, layerDrawable, maskGradientDrawable)
 
         background = myDrawable
     }
 
-    private fun shadowDrawable(
+    private fun layerDrawable(
         backgroundColor: Int,
         shadowColor: Int,
         shadowHeight: Float,
@@ -134,9 +133,7 @@ class ButtonAlper : AppCompatButton {
         val bottomShapeDrawable = ShapeDrawable(roundRectShape)
         bottomShapeDrawable.paint.color = shadowColor
 
-        val drawArray = arrayOf<Drawable>(bottomShapeDrawable, topShapeDrawable)
-        val layerDrawable = LayerDrawable(drawArray)
-        layerDrawable.setLayerInset(0, 0, 0, 0, 0) /*index, left, top, right, bottom*/
+        val layerDrawable = LayerDrawable(arrayOf(bottomShapeDrawable, topShapeDrawable))
         layerDrawable.setLayerInset(1, 0, 0, 0, shadowHeight.toInt())
 
         return layerDrawable
@@ -176,45 +173,29 @@ class ButtonAlper : AppCompatButton {
 
     fun changeBackgroundColor(color: Int): ButtonAlper {
         buttonBackgroundColor = color
-        setDefButtonAttributes()
+        setButtonAttributes()
         return this
     }
 
     fun changeRadius(radius: Float): ButtonAlper {
         buttonRadius = radius
-        gradientDrawable.cornerRadii = getFloatArray(radius)
+        setButtonAttributes()
         return this
     }
 
     fun changeShadowState(shadowColor: Int, shadowHeight: Float): ButtonAlper {
-        val shadowDrawable = shadowDrawable(
-            buttonBackgroundColor!!,
-            shadowColor,
-            shadowHeight,
-            buttonRadius!!
-        )
-        background = RippleDrawable(
-            getColorStateList(buttonRippleColor!!, buttonRippleOpacity!!),
-            shadowDrawable,
-            maskGradientDrawable
-        )
+
+        buttonShadowColor = shadowColor
+        buttonShadowHeight = shadowHeight
+        setButtonAttributes()
         return this
     }
 
     fun changeRippleEffect(rippleColor: Int, rippleOpacity: Float): ButtonAlper {
-        val colorStateList =
-            ColorStateList.valueOf(getColorForRipple(rippleColor, rippleOpacity))
 
-        background = RippleDrawable(
-            colorStateList,
-            shadowDrawable(
-                buttonBackgroundColor!!,
-                buttonShadowColor!!,
-                buttonShadowHeight!!,
-                buttonRadius!!
-            ),
-            maskGradientDrawable
-        )
+        buttonRippleColor = rippleColor
+        buttonRippleOpacity = rippleOpacity
+        setButtonAttributes()
         return this
     }
 }
