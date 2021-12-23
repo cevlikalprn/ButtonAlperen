@@ -27,15 +27,15 @@ class ButtonAlper : AppCompatButton {
 
     class ButtonBuilder(private val context: Context) {
 
-        var mBackgroundColor: Int = R.color.def_background_color
+        var mBackgroundColor: Int = context.resources.getColor(R.color.def_background_color)
             private set
         var mRadius: Float = DEF_RADIUS
             private set
-        var mShadowColor: Int = R.color.def_shadow_color
+        var mShadowColor: Int = context.resources.getColor(R.color.def_shadow_color)
             private set
         var mShadowHeight: Float = DEF_SHADOW_HEIGHT
             private set
-        var mRippleColor: Int = R.color.def_ripple_color
+        var mRippleColor: Int = context.resources.getColor(R.color.def_ripple_color)
             private set
         var mRippleOpacity: Float = DEF_RIPPLE_OPACITY
             private set
