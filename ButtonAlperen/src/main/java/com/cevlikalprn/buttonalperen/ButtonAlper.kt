@@ -8,9 +8,11 @@ import android.graphics.drawable.shapes.RoundRectShape
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
+import com.cevlikalprn.buttonalperen.Constants.DEF_BOTTOM_PADDING
 import com.cevlikalprn.buttonalperen.Constants.DEF_RADIUS
 import com.cevlikalprn.buttonalperen.Constants.DEF_RIPPLE_OPACITY
 import com.cevlikalprn.buttonalperen.Constants.DEF_SHADOW_HEIGHT
+import com.cevlikalprn.buttonalperen.Constants.DEF_TOP_PADDING
 import kotlin.math.min
 import kotlin.math.roundToInt
 
@@ -139,9 +141,9 @@ class ButtonAlper : AppCompatButton {
 
         setPadding(
             0,
-            30 + mShadowHeight.toInt(),
+            DEF_TOP_PADDING + mShadowHeight.toInt(),
             0,
-            30 + mShadowHeight.toInt()
+            DEF_BOTTOM_PADDING + mShadowHeight.toInt()
         )
 
         gradientDrawable.constantState?.let {

@@ -13,8 +13,11 @@ class MainActivity : AppCompatActivity() {
         val btnAlper = findViewById<ButtonAlper>(R.id.buttonAlper)
 
         ButtonAlper.ButtonBuilder(this)
+            .backgroundColor(resources.getColor(R.color.def_background_color))
+            .rippleColor(resources.getColor(R.color.white))
+            .radius(12f)
             .shadowHeight(12f)
+            .shadowColor(resources.getColor(R.color.def_shadow_color))
             .build(btnAlper)
-
     }
 }
