@@ -137,6 +137,13 @@ class ButtonAlper : AppCompatButton {
         gradientDrawable.cornerRadii = getFloatArray(mRadius)
         gradientDrawable.setColor(mBackgroundColor)
 
+        setPadding(
+            0,
+            30 + mShadowHeight.toInt(),
+            0,
+            30 + mShadowHeight.toInt()
+        )
+
         gradientDrawable.constantState?.let {
             maskGradientDrawable = it.newDrawable() as GradientDrawable
             maskGradientDrawable.setColor(Color.WHITE)
@@ -187,7 +194,6 @@ class ButtonAlper : AppCompatButton {
             )
         )
 
-
     private fun getFloatArray(value: Float) = floatArrayOf(
         value,
         value,
@@ -199,7 +205,6 @@ class ButtonAlper : AppCompatButton {
         value
     )
 
-
     private fun getColorForRipple(rippleColor: Int, opacity: Float) =
         Color.argb(
             min((opacity * 255).roundToInt(), 255),
@@ -207,5 +212,4 @@ class ButtonAlper : AppCompatButton {
             min(Color.green(rippleColor).toFloat().roundToInt(), 255),
             min(Color.blue(rippleColor).toFloat().roundToInt(), 255)
         )
-
 }
