@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat
 import com.cevlikalprn.buttonalperen.Constants.DEF_BOTTOM_PADDING
 import com.cevlikalprn.buttonalperen.Constants.DEF_RADIUS
 import com.cevlikalprn.buttonalperen.Constants.DEF_RIPPLE_OPACITY
+import com.cevlikalprn.buttonalperen.Constants.DEF_SHADOW_BRIGHTNESS
 import com.cevlikalprn.buttonalperen.Constants.DEF_SHADOW_HEIGHT
 import com.cevlikalprn.buttonalperen.Constants.DEF_TOP_PADDING
 import kotlin.math.min
@@ -26,6 +27,7 @@ class ButtonAlper : AppCompatButton {
     private var mShadowHeight: Float = DEF_SHADOW_HEIGHT
     private var mRippleColor: Int = resources.getColor(R.color.def_ripple_color)
     private var mRippleOpacity: Float = DEF_RIPPLE_OPACITY
+    private var mShadowBrightness: Boolean = DEF_SHADOW_BRIGHTNESS
 
     class ButtonBuilder(private val context: Context) {
 
@@ -129,6 +131,11 @@ class ButtonAlper : AppCompatButton {
                 DEF_RIPPLE_OPACITY
             )
 
+            mShadowBrightness = typedArray.getBoolean(
+                R.styleable.ButtonAlper_ab_shadowBrightness,
+                DEF_SHADOW_BRIGHTNESS
+            )
+
             typedArray.recycle()
         }
         setButtonAttributes()
@@ -145,6 +152,15 @@ class ButtonAlper : AppCompatButton {
             0,
             DEF_BOTTOM_PADDING + mShadowHeight.toInt()
         )
+
+        val alpha = Color.alpha(mBackgroundColor)
+        val hsv = FloatArray(3)
+        Color.colorToHSV(mBackgroundColor, hsv)
+        hsv[2] *= 0.8f
+
+        if (mShadowBrightness) {
+            mShadowColor = Color.HSVToColor(alpha, hsv)
+        }
 
         gradientDrawable.constantState?.let {
             maskGradientDrawable = it.newDrawable() as GradientDrawable

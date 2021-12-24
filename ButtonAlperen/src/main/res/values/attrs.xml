@@ -10,6 +10,7 @@
         <attr name="ab_radius" format="dimension" />
         <attr name="ab_ripple_color" format="color" />
         <attr name="ab_ripple_opacity" format="float" />
+        <attr name="ab_shadowBrightness" format="boolean"/>
     </declare-styleable>
 
 </resources>
